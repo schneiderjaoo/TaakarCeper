@@ -10,10 +10,23 @@ import java.util.Scanner;
 
 public class App {
     public static void main(String[] args) throws IOException, InterruptedException {
+        String cep = " ";
+        boolean termina = false;
+        Scanner sc = new Scanner(System.in);
+
+        while (termina == false) {
+            System.out.println("Digite seu cep");
+            cep = sc.nextLine();
+
+            if(cep.length() == 8){
+                ConsultaEndereco consulta = new ConsultaEndereco();
+                Endereco novoEndereco = consulta.buscaEndereco(cep);
+                System.out.println(novoEndereco);
+                termina = true;
+            }
+            System.out.println("O cep precisa ter no mínimo 8 caracteres");
+        }
         
-        ConsultaEndereco consulta = new ConsultaEndereco();
-        Endereco novoEndereco = consulta.buscaEndereco("1");
-        System.out.println(novoEndereco);
         // String responseBody = response.body();
         // System.out.println(response.body());
         // //try tente
