@@ -1,5 +1,7 @@
 package com.ceper;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 public record Endereco(
     String cep,
     String logradouro,
@@ -11,19 +13,15 @@ public record Endereco(
     String ibge,
     String gia,
     String ddd,
-    String siafi){
+    String siafi) {
 
+    public String toJson() {
+        try {
+            ObjectMapper objectMapper = new ObjectMapper();
+            return objectMapper.writeValueAsString(this);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
-
-/*"cep": "01001-000",
-  "logradouro": "Praça da Sé",
-  "complemento": "lado ímpar",
-  "unidade": "",
-  "bairro": "Sé",
-  "localidade": "São Paulo",
-  "uf": "SP",
-  "ibge": "3550308",
-  "gia": "1004",
-  "ddd": "11",
-  "siafi": "7107" */
-
