@@ -19,10 +19,16 @@ public class App {
             cep = sc.nextLine();
 
             if(cep.length() == 8){
-                ConsultaEndereco consulta = new ConsultaEndereco();
-                Endereco novoEndereco = consulta.buscaEndereco(cep);
-                System.out.println(novoEndereco);
-                termina = true;
+                try{
+                    ConsultaEndereco consulta = new ConsultaEndereco();
+                    Endereco novoEndereco = consulta.buscaEndereco(cep);
+                    System.out.println(novoEndereco);
+                }catch(RuntimeException e){
+                    System.out.println(e.getMessage());
+                }finally{
+                    System.out.println("Finalizando a sessão");
+                    termina = true;
+                }
             }
             System.out.println("O cep precisa ter no mínimo 8 caracteres");
         }
