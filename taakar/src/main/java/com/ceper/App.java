@@ -29,8 +29,9 @@ public class App {
                     System.out.println("Finalizando a sessão");
                     termina = true;
                 }
+            }else if(cep.length() < 8){
+                System.out.println("O cep precisa ter no mínimo 8 caracteres");
             }
-            System.out.println("O cep precisa ter no mínimo 8 caracteres");
         }
         
         // String responseBody = response.body();
